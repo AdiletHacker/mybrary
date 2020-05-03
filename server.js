@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const indexRouter = require("./Routes/index");
 const authorRouter = require("./routes/authors");
+const bookRouter = require("./routes/books");
 const app = express();
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -23,6 +24,7 @@ app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
 app.use(express.static("public"));
 app.use("/", indexRouter);
 app.use("/authors", authorRouter);
+app.use("/books", bookRouter);
 
 
 
